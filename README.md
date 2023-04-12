@@ -11,7 +11,7 @@ Project completed as part of The Odin Project. First Javascript project.
 
 ## What I learned:
  - 
- 
+
 ## Still can improve:
  - 
 
