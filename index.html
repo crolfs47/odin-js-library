@@ -10,16 +10,15 @@
 </head>
 <body>
   <h1>My Library</h1>
-  <form class="new-book-form">
-    <label>Title: </label>
-    <input type="text" name="title" id="newTitle", required><br>
-    <label>Author: </label>
-    <input type="text" name="author" id="newAuthor", required><br>
-    <label>Pages: </label>
-    <input type="text" name="pages" id="newPages", required><br>
+  <button class="new-book-button">Add New Book</button>
+  <form class="new-book-form hidden">
+    <input type="text" name="title" id="newTitle" placeholder="Title", required>
+    <input type="text" name="author" id="newAuthor" placeholder="Author", required>
+    <input type="text" name="pages" id="newPages" placeholder="Pages", required>
     <label for="pages">Read?</label>
-    <input type="checkbox" name="read" id="newRead"><br>
-    <input type="submit" value="Add New Book" class="add-book-button">
+    <input type="checkbox" name="read" id="newRead">
+    <input type="submit" value="Submit">
+    <button type="button" class="cancel-new-book-button">Cancel</button>
   </form>
   <h2>All Books</h2>
   <table class="book-table">

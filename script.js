@@ -1,7 +1,9 @@
 const myLibrary = [];
 
+const newBookButton = document.querySelector('.new-book-button');
 const newBookForm = document.querySelector('.new-book-form');
 const bookTable = document.querySelector('.book-table');
+const cancelNewBookButton = document.querySelector('.cancel-new-book-button');
 
 function Book(title, author, pages, read = false) {
   this.title = title;
@@ -48,11 +50,25 @@ function displayBooks(myLibrary) {
   });
 }
 
+function toggleHiddenClass() {
+  newBookForm.classList.toggle('hidden');
+  newBookButton.classList.toggle('hidden');
+}
+
 newBookForm.addEventListener('submit', (e) => {
   e.preventDefault();
   createNewBook();
-  console.log(myLibrary);
+  newBookForm.reset();
+  toggleHiddenClass();
   displayBooks(myLibrary);
+});
+
+newBookButton.addEventListener('click', () => {
+  toggleHiddenClass();
+});
+
+cancelNewBookButton.addEventListener('click', () => {
+  toggleHiddenClass();
 });
 
 // Manually add books to library
@@ -64,8 +80,6 @@ book3 = new Book('Black Cake', 'Charmaine Wilkerson', '385', true);
 addBookToLibrary(book3);
 book4 = new Book('Crying in H Mart', 'Michelle Zauner', '256', false);
 addBookToLibrary(book4);
-
-
 
 console.log('Test');
 console.log(myLibrary);
