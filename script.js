@@ -26,34 +26,34 @@ function createNewBook() {
   addBookToLibrary(newBook);
 }
 
-function displayBooks(myLibrary) {
+function displayBooks(library) {
   bookTable.innerHTML = '';
-  myLibrary.forEach((book) => {
+  for (let i = 0; i < myLibrary.length; i++) {
     const row = document.createElement('tr');
     row.classList.add('book-row');
     bookTable.appendChild(row);
 
     const title = document.createElement('td');
     row.appendChild(title);
-    title.textContent = book.title;
+    title.textContent = library[i].title;
 
     const author = document.createElement('td');
     row.appendChild(author);
-    author.textContent = book.author;
+    author.textContent = library[i].author;
 
     const pages = document.createElement('td');
     row.appendChild(pages);
-    pages.textContent = book.pages;
+    pages.textContent = library[i].pages;
 
     const read = document.createElement('td');
     row.appendChild(read);
-    read.textContent = book.read === true ? 'Yes' : 'No';
+    read.textContent = library[i].read === true ? 'Yes' : 'No';
 
     const remove = document.createElement('button');
     row.appendChild(remove);
     row.classList.add('delete-book');
     remove.textContent = 'Delete';
-  });
+  }
 }
 
 function toggleHiddenClass() {
@@ -78,9 +78,9 @@ cancelNewBookButton.addEventListener('click', () => {
   toggleHiddenClass();
 });
 
-deleteBook.addEventListener('click', () => {
+// deleteBook.addEventListener('click', () => {
 
-});
+// });
 
 // Manually add books to library
 book1 = new Book('The Great Believers', 'Rebecca Marakai', '421', true);
@@ -92,5 +92,3 @@ addBookToLibrary(book3);
 book4 = new Book('Crying in H Mart', 'Michelle Zauner', '256', false);
 addBookToLibrary(book4);
 
-console.log('Test');
-console.log(myLibrary);
