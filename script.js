@@ -1,9 +1,9 @@
 const myLibrary = [];
-
 const newBookButton = document.querySelector('.new-book-button');
 const newBookForm = document.querySelector('.new-book-form');
 const bookTable = document.querySelector('.book-table-body');
 const cancelNewBookButton = document.querySelector('.cancel-new-book-button');
+const deleteBook = document.querySelector('delte-book');
 
 function Book(title, author, pages, read = false) {
   this.title = title;
@@ -48,6 +48,11 @@ function displayBooks(myLibrary) {
     const read = document.createElement('td');
     row.appendChild(read);
     read.textContent = book.read === true ? 'Yes' : 'No';
+
+    const remove = document.createElement('button');
+    row.appendChild(remove);
+    row.classList.add('delete-book');
+    remove.textContent = 'Delete';
   });
 }
 
@@ -56,6 +61,7 @@ function toggleHiddenClass() {
   newBookButton.classList.toggle('hidden');
 }
 
+// Event Listeners
 newBookForm.addEventListener('submit', (e) => {
   e.preventDefault();
   createNewBook();
@@ -70,6 +76,10 @@ newBookButton.addEventListener('click', () => {
 
 cancelNewBookButton.addEventListener('click', () => {
   toggleHiddenClass();
+});
+
+deleteBook.addEventListener('click', () => {
+
 });
 
 // Manually add books to library
