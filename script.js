@@ -2,7 +2,7 @@ const myLibrary = [];
 
 const newBookButton = document.querySelector('.new-book-button');
 const newBookForm = document.querySelector('.new-book-form');
-const bookTable = document.querySelector('.book-table');
+const bookTable = document.querySelector('.book-table-body');
 const cancelNewBookButton = document.querySelector('.cancel-new-book-button');
 
 function Book(title, author, pages, read = false) {
@@ -27,6 +27,7 @@ function createNewBook() {
 }
 
 function displayBooks(myLibrary) {
+  bookTable.innerHTML = '';
   myLibrary.forEach((book) => {
     const row = document.createElement('tr');
     row.classList.add('book-row');
