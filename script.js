@@ -29,18 +29,22 @@ function displayBooks(myLibrary) {
     const row = document.createElement('tr');
     row.classList.add('book-row');
     bookTable.appendChild(row);
+
     const title = document.createElement('td');
     row.appendChild(title);
     title.textContent = book.title;
+
     const author = document.createElement('td');
     row.appendChild(author);
     author.textContent = book.author;
+
     const pages = document.createElement('td');
     row.appendChild(pages);
     pages.textContent = book.pages;
+
     const read = document.createElement('td');
     row.appendChild(read);
-    read.textContent = book.read;
+    read.textContent = book.read === true ? 'Yes' : 'No';
   });
 }
 
@@ -57,6 +61,8 @@ book2 = new Book('Educated', 'Tara Westover', '352', true);
 addBookToLibrary(book2);
 book3 = new Book('Black Cake', 'Charmaine Wilkerson', '385', true);
 addBookToLibrary(book3);
+book4 = new Book('Crying in H Mart', 'Michelle Zauner', '256', false);
+addBookToLibrary(book4);
 
 displayBooks(myLibrary);
 
