@@ -1,6 +1,7 @@
 let myLibrary = [];
 
 const newBookForm = document.querySelector('.new-book-form');
+const bookTable = document.querySelector('.book-table');
 
 function Book(title, author, pages, read = false) {
   this.title = title;
@@ -23,8 +24,24 @@ function createNewBook() {
   addBookToLibrary(newBook);
 }
 
-function displayBooks() {
-
+function displayBooks(myLibrary) {
+  myLibrary.forEach((book) => {
+    const row = document.createElement('tr');
+    row.classList.add('book-row');
+    bookTable.appendChild(row);
+    const title = document.createElement('td');
+    row.appendChild(title);
+    title.textContent = book.title;
+    const author = document.createElement('td');
+    row.appendChild(author);
+    author.textContent = book.author;
+    const pages = document.createElement('td');
+    row.appendChild(pages);
+    pages.textContent = book.pages;
+    const read = document.createElement('td');
+    row.appendChild(read);
+    read.textContent = book.read;
+  });
 }
 
 newBookForm.addEventListener('submit', (e) => {
@@ -40,6 +57,8 @@ book2 = new Book('Educated', 'Tara Westover', '352', true);
 addBookToLibrary(book2);
 book3 = new Book('Black Cake', 'Charmaine Wilkerson', '385', true);
 addBookToLibrary(book3);
+
+displayBooks(myLibrary);
 
 console.log('Test');
 console.log(myLibrary);
