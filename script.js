@@ -15,14 +15,9 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function createNewBook() {
-  const newTitle = document.getElementById('newTitle').value;
-  const newAuthor = document.getElementById('newAuthor').value;
-  const newPages = document.getElementById('newPages').value;
-  const newRead = document.getElementById('newRead').checked;
-
-  const newBook = new Book(newTitle, newAuthor, newPages, newRead);
-  addBookToLibrary(newBook);
+function toggleHiddenClass() {
+  newBookForm.classList.toggle('hidden');
+  newBookButton.classList.toggle('hidden');
 }
 
 function deleteBook(i) {
@@ -75,35 +70,31 @@ function displayBooks(library) {
   }
 }
 
-function toggleHiddenClass() {
-  newBookForm.classList.toggle('hidden');
-  newBookButton.classList.toggle('hidden');
-}
-
-// Event Listeners
-newBookForm.addEventListener('submit', (e) => {
+function createNewBook(e) {
   e.preventDefault();
-  createNewBook();
+  const newTitle = document.getElementById('newTitle').value;
+  const newAuthor = document.getElementById('newAuthor').value;
+  const newPages = document.getElementById('newPages').value;
+  const newRead = document.getElementById('newRead').checked;
+
+  const newBook = new Book(newTitle, newAuthor, newPages, newRead);
+  addBookToLibrary(newBook);
   newBookForm.reset();
   toggleHiddenClass();
   displayBooks(myLibrary);
-});
+}
 
-newBookButton.addEventListener('click', () => {
-  toggleHiddenClass();
-});
-
-cancelNewBookButton.addEventListener('click', () => {
-  toggleHiddenClass();
-});
+// Event Listeners
+newBookForm.addEventListener('submit', createNewBook);
+newBookButton.addEventListener('click', toggleHiddenClass);
+cancelNewBookButton.addEventListener('click', toggleHiddenClass);
 
 // Manually add books to library
-book1 = new Book('The Great Believers', 'Rebecca Marakai', '421', true);
-addBookToLibrary(book1);
-book2 = new Book('Educated', 'Tara Westover', '352', true);
-addBookToLibrary(book2);
-book3 = new Book('Black Cake', 'Charmaine Wilkerson', '385', true);
-addBookToLibrary(book3);
-book4 = new Book('Crying in H Mart', 'Michelle Zauner', '256', false);
-addBookToLibrary(book4);
-
+// book1 = new Book('The Great Believers', 'Rebecca Marakai', '421', true);
+// addBookToLibrary(book1);
+// book2 = new Book('Educated', 'Tara Westover', '352', true);
+// addBookToLibrary(book2);
+// book3 = new Book('Black Cake', 'Charmaine Wilkerson', '385', true);
+// addBookToLibrary(book3);
+// book4 = new Book('Crying in H Mart', 'Michelle Zauner', '256', false);
+// addBookToLibrary(book4);
