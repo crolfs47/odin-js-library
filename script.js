@@ -25,10 +25,16 @@ function createNewBook() {
   addBookToLibrary(newBook);
 }
 
-function deleteBook(index) {
-  myLibrary.splice(index, 1);
-  const book = document.getElementById(index);
+function deleteBook(i) {
+  myLibrary.splice(i, 1);
+  const book = document.getElementById(`book-${i}`);
   book.remove();
+}
+
+function updateReadStatus(i) {
+  myLibrary[i].read = myLibrary[i].read === false;
+  const bookStatus = document.getElementById(`read-${i}`);
+  bookStatus.textContent = myLibrary[i].read === true ? 'Yes' : 'No';
 }
 
 function displayBooks(library) {
@@ -36,7 +42,7 @@ function displayBooks(library) {
   for (let i = 0; i < myLibrary.length; i += 1) {
     const row = document.createElement('tr');
     row.classList.add('book-row');
-    row.setAttribute('id', i);
+    row.setAttribute('id', `book-${i}`);
     bookTable.appendChild(row);
 
     const title = document.createElement('td');
@@ -53,7 +59,13 @@ function displayBooks(library) {
 
     const read = document.createElement('td');
     row.appendChild(read);
+    read.setAttribute('id', `read-${i}`);
     read.textContent = library[i].read === true ? 'Yes' : 'No';
+
+    const readButton = document.createElement('button');
+    row.appendChild(readButton);
+    readButton.textContent = 'Update Read Status';
+    readButton.addEventListener('click', () => updateReadStatus(i));
 
     const deleteButton = document.createElement('button');
     row.appendChild(deleteButton);
