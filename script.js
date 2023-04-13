@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 const newBookForm = document.querySelector('.new-book-form');
 const bookTable = document.querySelector('.book-table');
@@ -15,12 +15,12 @@ function addBookToLibrary(book) {
 }
 
 function createNewBook() {
-  let newTitle = document.getElementById('newTitle');
-  let newAuthor = document.getElementById('newAuthor');
-  let newPages = document.getElementById('newPages');
-  let newRead = document.getElementById('newRead').checked;
+  const newTitle = document.getElementById('newTitle').value;
+  const newAuthor = document.getElementById('newAuthor').value;
+  const newPages = document.getElementById('newPages').value;
+  const newRead = document.getElementById('newRead').checked;
 
-  let newBook = new Book(newTitle, newAuthor, newPages, newRead);
+  const newBook = new Book(newTitle, newAuthor, newPages, newRead);
   addBookToLibrary(newBook);
 }
 
@@ -52,6 +52,7 @@ newBookForm.addEventListener('submit', (e) => {
   e.preventDefault();
   createNewBook();
   console.log(myLibrary);
+  displayBooks(myLibrary);
 });
 
 // Manually add books to library
@@ -64,7 +65,7 @@ addBookToLibrary(book3);
 book4 = new Book('Crying in H Mart', 'Michelle Zauner', '256', false);
 addBookToLibrary(book4);
 
-displayBooks(myLibrary);
+
 
 console.log('Test');
 console.log(myLibrary);
